@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql:
+    build:
+      context: ./docker/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootadmin
+    volumes:
+      - mysql-data:/var/lib/mysql
+  php-apache:
+    image: php:apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - mysql
+volumes:
+  mysql-data:
