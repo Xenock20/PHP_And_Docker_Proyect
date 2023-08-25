@@ -1,0 +1,9 @@
+# Archivos de configuración y caché
+docker-compose.yml
+docker/mysql/my.cnf
+
+# Archivos de datos
+mysql-data/
+
+# Otros
+.DS_Store
