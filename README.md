@@ -32,4 +32,5 @@ Proyecto en php sobre el clasico juego de piedra papel o tijera.
      ```
 
 5. **Accede a la Aplicación:**
+   
   La aplicación web estará disponible en tu navegador en: http://localhost:80/index.php
