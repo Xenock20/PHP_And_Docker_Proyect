@@ -21,15 +21,15 @@ Proyecto en php sobre el clasico juego de piedra papel o tijera.
 
 3. **Ingresa a la Carpeta del Repositorio:**
 
-  ```bash
-  cd PHP_And_Docker_Proyect
-  ```
+     ```bash
+     cd PHP_And_Docker_Proyect
+     ```
 
 4. **Inicia el Proyecto:**
 
-  ```bash
-  docker-compose up -d
-  ```
+     ```bash
+     docker-compose up -d
+     ```
 
 5. **Accede a la Aplicación:**
   La aplicación web estará disponible en tu navegador en: http://localhost:80/index.php
