@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piedra Papel o Tijera</title>
-</head>
-<body>
-    <?php
-        echo("<h1>Hola mundo</h1>")
-    ?>
-</body>
-</html>
+<?php
+$host = 'mysql';  // Nombre del servicio MySQL en Docker Compose
+$user = 'root';
+$password = 'rootadmin';
+$database = 'Juego';
+
+$mysqli = new mysqli($host, $user, $password, $database);
+
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+echo "Connected successfully to MySQL!";
+?>

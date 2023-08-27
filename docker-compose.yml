@@ -4,16 +4,28 @@ services:
     build:
       context: ./docker/mysql
     environment:
+      MYSQL_DATABASE: Juego
+      MYSQL_USER: root
+      MYSQL_PASSWORD: rootadmin
       MYSQL_ROOT_PASSWORD: rootadmin
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/mysql/my.cnf:/etc/my.cnf:ro
+    networks:
+      - my-network
   php-apache:
-    image: php:apache
+    build:
+      context: ./html
     ports:
       - "80:80"
     volumes:
       - ./html:/var/www/html
     depends_on:
       - mysql
+    networks:
+      - my-network
 volumes:
   mysql-data:
+networks:
+  my-network:
