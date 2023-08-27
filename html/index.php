@@ -2,7 +2,7 @@
 $host = 'mysql';  // Nombre del servicio MySQL en Docker Compose
 $user = 'root';
 $password = 'rootadmin';
-$database = 'Juego';
+$database = 'juego';
 
 $mysqli = new mysqli($host, $user, $password, $database);
 

@@ -1,7 +1,3 @@
-CREATE DATABASE Juego;
-
-USE Juego;
-
 CREATE TABLE Partida (
     id INT AUTO_INCREMENT PRIMARY KEY,
     resultado VARCHAR(255),

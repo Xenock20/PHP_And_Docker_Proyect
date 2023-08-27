@@ -2,18 +2,19 @@ version: '3'
 services:
   mysql:
     build:
-      context: ./docker/mysql
+      context: ./sql
+      dockerfile: Dockerfile
     environment:
-      MYSQL_DATABASE: Juego
-      MYSQL_USER: root
-      MYSQL_PASSWORD: rootadmin
       MYSQL_ROOT_PASSWORD: rootadmin
+      MYSQL_DATABASE: juego
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./docker/mysql/my.cnf:/etc/my.cnf:ro
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - my-network
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
   php-apache:
     build:
       context: ./html
