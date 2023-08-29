@@ -94,57 +94,66 @@ if (isset($_POST['playAgain'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego Original</title>
-    <link rel="stylesheet" href="styleGameOriginal.css">
+    <link rel="stylesheet" href="styleGame.css">
 </head>
 
 <body>
-    <h1 class="title">Juego de Piedra, papel o tijera</h1>
-    <form method="POST" class="form">
-        <h2 class="subtitle">Seleccione tu jugada <?php echo $name ?></h2>
-        <div class="options-cont">
-            <div class="opt-cont">
-                <input type="radio" name="opt" value="piedra" id="piedra" required>
-                <label for="piedra">
-                    <img src="../../img/piedra.png" alt="img-piedra" class="img-opt">
-                    <span class="text-opt">PIEDRA</span>
-                </label>
-                </input>
+    <div class="title-container">
+        <h1 class="angled-title title">Piedra</h1>
+        <h1 class="normal-title title">Papel</h1>
+        <h1 class="angled-title-right title">Tijera</h1>
+    </div>
+    <div class="cont-game">
+        <form method="POST" class="form">
+            <h2 class="subtitle">Seleccione tu jugada <?php echo $name ?></h2>
+            <div class="options-cont">
+                <div class="opt-cont">
+                    <input type="radio" name="opt" value="piedra" id="piedra" required class="in-opt">
+                    <label for="piedra" class="opt-label">
+                        <img src="../../img/piedra.png" alt="img-piedra" class="img-opt">
+                        <span class="text-opt">PIEDRA</span>
+                    </label>
+                    </input>
+                </div>
+                <div class="opt-cont">
+                    <input type="radio" name="opt" value="papel" id="papel" required class="in-opt">
+                    <label for="papel" class="opt-label">
+                        <img src="../../img/papel.png" alt="img-papel" class="img-opt">
+                        <span class="text-opt">PAPEL</span>
+                    </label>
+                    </input>
+                </div>
+                <div class="opt-cont">
+                    <input type="radio" name="opt" value="tijera" id="tijera" required class="in-opt">
+                    <label for="tijera" class="opt-label">
+                        <img src="../../img/tijera.png" alt="img-tijera" class="img-opt">
+                        <span class="text-opt">TIJERA</span>
+                    </label>
+                    </input>
+                </div>
             </div>
-            <div class="opt-cont">
-                <input type="radio" name="opt" value="papel" id="papel" required>
-                <label for="papel">
-                    <img src="../../img/papel.png" alt="img-papel" class="img-opt">
-                    <span class="text-opt">PAPEL</span>
-                </label>
-                </input>
+
+            <button type="submit" name="gameSubmit" class="btn-play">¡Jugar!</button>
+        </form>
+
+        <h3>VS</h3>
+
+        <div class="cont-cpu">
+            <div class="box-cpu">
+                <h2 class="title-cpu">CPU</h2>
+                <img src="../../img/cpu.png" alt="cpu-img" class="img-cpu">
             </div>
-            <div class="opt-cont">
-                <input type="radio" name="opt" value="tijera" id="tijera" required>
-                <label for="tijera">
-                    <img src="../../img/tijera.png" alt="img-tijera" class="img-opt">
-                    <span class="text-opt">TIJERA</span>
-                </label>
-                </input>
-            </div>
-        </div>
-
-        <button type="submit" name="gameSubmit">¡Jugar!</button>
-    </form>
-
-    <h3>VS</h3>
-
-    <div class="cont-cpu">
-        <div class="box-cpu">
-            <h2 class="title-cpu">CPU</h2>
-            <img src="../../img/cpu.png" alt="cpu-img" class="img-cpu">
         </div>
     </div>
+
+    <a href="../../index.php" class="return-link">Volver al Inicio</a>
 
     <?php if ($playerChoice) : ?>
         <div class="modal-result">
             <div class="cont-result">
-                <p>Elección de la CPU: <?php echo ucfirst($cpuChoice); ?></p>
-                <p>Resultado: <?php echo $result; ?></p>
+                <p class="text-choise">Elección de la CPU: <?php echo ucfirst($cpuChoice); ?></p>
+                <p class="text-choise-player">Tu eleccion: <?php echo ucfirst($playerChoice); ?></p>
+                <p class="text-result-finaly">Resultado: <?php echo $result; ?></p>
                 <?php if ($showMsj) : ?>
                     <div class='msj-box'>
                         <p> <?php echo $msj_info ?></p>
@@ -154,8 +163,8 @@ if (isset($_POST['playAgain'])) {
                     <input type="hidden" name="playerChoice" value="<?php echo $playerChoice; ?>">
                     <input type="hidden" name="cpuChoice" value="<?php echo $cpuChoice; ?>">
                     <div class="btn-result">
-                        <button type="submit" name="submitResultToDatabase">Guardar Resultado e Ir a la tabla</button>
-                        <button type="submit" name="playAgain">Revancha</button>
+                        <button type="submit" class="btn-res save" name="submitResultToDatabase">Guardar Resultado e Ir a la tabla</button>
+                        <button type="submit" class="btn-res again" name="playAgain">Revancha</button>
                     </div>
                 </form>
             </div>
