@@ -32,12 +32,16 @@ $result = $mysqli->query($query);
                 <th>ID</th>
                 <th>Resultado</th>
                 <th>Jugador</th>
+                <th>Eleccion Jugador</th>
+                <th>Eleccion CPU</th>
             </tr>
             <?php while ($row = $result->fetch_assoc()) : ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['resultado']; ?></td>
                     <td><?php echo $row['jugador']; ?></td>
+                    <td><?php echo $row['eleccion_jugador']; ?></td>
+                    <td><?php echo $row['eleccion_cpu']; ?></td>
                 </tr>
             <?php endwhile; ?>
         </table>

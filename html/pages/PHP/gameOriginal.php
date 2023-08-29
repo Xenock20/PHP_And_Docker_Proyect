@@ -22,7 +22,7 @@ function determinarWin($playerChoice, $cpuChoice)
     }
 }
 
-function saveResultado($result, $playerName)
+function saveResultado($result, $playerName, $choiceCpu, $choicePlayer)
 {
     $host = 'mysql';
     $user = 'root';
@@ -39,8 +39,8 @@ function saveResultado($result, $playerName)
     $name = mysqli_real_escape_string($mysqli, $playerName);
     $result = mysqli_real_escape_string($mysqli, $result);
 
-    $query = "INSERT INTO Partida (resultado, jugador) 
-              VALUES ('$result', '$name')";
+    $query = "INSERT INTO Partida (resultado, jugador, eleccion_jugador, eleccion_cpu) 
+              VALUES ('$result', '$name', '$choicePlayer', '$choiceCpu')";
 
     if ($mysqli->query($query)) {
         return true;
@@ -60,7 +60,7 @@ if (isset($_POST['submitResultToDatabase'])) {
     $cpuChoice = $_POST['cpuChoice'];
     $result = determinarWin($playerChoice, $cpuChoice);
 
-    $insertSuccess = saveResultado($result, $name);
+    $insertSuccess = saveResultado($result, $name, $cpuChoice, $playerChoice);
 
     if ($insertSuccess) {
         header("Location: ../Table/tableDB.php");
@@ -77,7 +77,7 @@ if (isset($_POST['playAgain'])) {
     $cpuChoice = $_POST['cpuChoice'];
     $result = determinarWin($playerChoice, $cpuChoice);
 
-    $insertSuccess = saveResultado($result, $name);
+    $insertSuccess = saveResultado($result, $name, $cpuChoice, $playerChoice);
 
     $result = '';
     $playerChoice = '';

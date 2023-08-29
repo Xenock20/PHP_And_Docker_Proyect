@@ -1,7 +1,6 @@
 const saveNameButton = document.getElementById("saveNameButton");
 const playerNameInput = document.getElementById("playerNameInput");
 const phpLink = document.getElementById("phpLink");
-const jsLink = document.getElementById("jsLink");
 const namePlayer = document.getElementById("namePlayer");
 const modal = document.getElementById("modal");
 const openModalButton = document.getElementById("openModal");
@@ -22,6 +21,5 @@ saveNameButton.addEventListener("click", () => {
 
   modal.style.display = "none";
   phpLink.href = `./pages/PHP/gameOriginal.php?player=${playerName}`;
-  jsLink.href = `./pages/PHP-JS/gamePlus.php?player=${playerName}`;
   namePlayer.textContent = playerName;
 });

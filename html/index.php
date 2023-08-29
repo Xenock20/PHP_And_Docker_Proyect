@@ -31,8 +31,7 @@
         </div>
 
         <div class="list-link">
-            <a href="./pages/PHP/gameOriginal.php" class="link-box" id="phpLink">JUEGO ORIGINAL (PHP)</a>
-            <a href="./pages/PHP-JS/gamePlus.php" class="link-box" id="jsLink">JUEGO PLUS (PHP + JS)</a>
+            <a href="./pages/PHP/gameOriginal.php" class="link-box" id="phpLink">JUGAR!</a>
             <a href="./pages/Table/tableDB.php" class="link-box" id="tableLink">TABLA DE JUGADORES</a>
         </div>
     </div>
