@@ -14,8 +14,9 @@ openModalButton.addEventListener("click", () => {
 // Guarda el nombre y habilita los enlaces
 saveNameButton.addEventListener("click", () => {
   let playerName = playerNameInput.value;
+  const nameValid = playerName.trim();
 
-  if (playerName.length === 0) {
+  if (nameValid.length === 0) {
     playerName = "Player";
   }
 
