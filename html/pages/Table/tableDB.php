@@ -1,13 +1,13 @@
 <?php
-$host = 'mysql';  // Nombre del servicio MySQL en Docker Compose
-$user = 'root';
-$password = 'rootadmin';
-$database = 'juego';
+include '../../db_config.php';
 
-$mysqli = new mysqli($host, $user, $password, $database);
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+//$mysqli->connect_error or die("...");
 
 if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+    header("Location: index.html");
+    exit();;
 }
 
 $query = "SELECT * FROM Partida";

@@ -1,4 +1,6 @@
 <?php
+include '../../db_config.php';
+
 $name = $_GET['player'];
 $cpuChoice = '';
 $cpuChoices = ['piedra', 'papel', 'tijera'];
@@ -24,29 +26,22 @@ function determinarWin($playerChoice, $cpuChoice)
 
 function saveResultado($result, $playerName, $choiceCpu, $choicePlayer)
 {
-    $host = 'mysql';
-    $user = 'root';
-    $password = 'rootadmin';
-    $database = 'juego';
-
-    $mysqli = new mysqli($host, $user, $password, $database);
+    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     if ($mysqli->connect_error) {
         header("Location: index.html");
         exit();
     }
 
-    $name = mysqli_real_escape_string($mysqli, $playerName);
-    $result = mysqli_real_escape_string($mysqli, $result);
+    $nameSQL = mysqli_real_escape_string($mysqli, $playerName);
+    $resultSQL = mysqli_real_escape_string($mysqli, $result);
+    $choiceCpuSQL = mysqli_real_escape_string($mysqli, $choiceCpu);
+    $choicePlayerSQL = mysqli_real_escape_string($mysqli, $choicePlayer);
 
     $query = "INSERT INTO Partida (resultado, jugador, eleccion_jugador, eleccion_cpu) 
-              VALUES ('$result', '$name', '$choicePlayer', '$choiceCpu')";
+              VALUES ('$resultSQL', '$nameSQL', '$choicePlayerSQL', '$choiceCpuSQL')";
 
-    if ($mysqli->query($query)) {
-        return true;
-    } else {
-        return false;
-    }
+    return $mysqli->query($query);
 }
 
 if (isset($_POST['gameSubmit'])) {
@@ -105,7 +100,7 @@ if (isset($_POST['playAgain'])) {
     </div>
     <div class="cont-game">
         <form method="POST" class="form">
-            <h2 class="subtitle">Seleccione tu jugada <?php echo $name ?></h2>
+            <h2 class="subtitle">Seleccione tu jugada <?php echo htmlentities($name); ?></h2>
             <div class="options-cont">
                 <div class="opt-cont">
                     <input type="radio" name="opt" value="piedra" id="piedra" required class="in-opt">
